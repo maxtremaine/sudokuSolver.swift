@@ -1,8 +1,8 @@
 @main
-public struct sudokuSolver_swift {
+public struct sudokuSolver {
     public private(set) var text = "Hello, World!"
 
     public static func main() {
-        print(sudokuSolver_swift().text)
+        print(sudokuSolver().text)
     }
 }

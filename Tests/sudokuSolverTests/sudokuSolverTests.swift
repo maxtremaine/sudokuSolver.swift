@@ -1,11 +1,11 @@
 import XCTest
-@testable import sudokuSolver_swift
+@testable import sudokuSolver
 
-final class sudokuSolver_swiftTests: XCTestCase {
+final class sudokuSolverTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(sudokuSolver_swift().text, "Hello, World!")
+        XCTAssertEqual(sudokuSolver().text, "Hello, World!")
     }
 }
