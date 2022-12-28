@@ -5,6 +5,20 @@ public struct Sudoku {
         self.values = values
     }
 
+    public static func fromSudokuFile(_ sudokuFile: String) -> Sudoku {
+        let splitFile = Array(sudokuFile)
+        let fileValues = fileToStringConversionIndexes.map { splitFile[$0] }
+            .map{
+                if($0 == "_") {
+                    return 0
+                } else {
+                    return $0.wholeNumberValue!
+                }
+            }
+        
+        return Sudoku(fileValues)
+    }
+
     public static func isSudokuFile(_ sudokuFile: String) -> Bool {
         if (sudokuFile.count != 167) { return false }
 
