@@ -1,4 +1,12 @@
 extension Array where Element == Int {
+    func getMissingDigits() -> [Int] {
+        if( !self.allSatisfy { Array(1...9).contains($0) } ) {
+            return []
+        }
+
+        return Array(1...9).filter{ !self.contains($0) }        
+    }
+
     func hasDuplicates() -> Bool {
         for (i, value) in self.enumerated() {
             if ( self.lastIndex(of: value) != i ) {
