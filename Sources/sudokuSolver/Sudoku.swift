@@ -1,11 +1,11 @@
-public struct Sudoku {
+struct Sudoku {
     let values: [Int]
 
     init(_ values: [Int]) {
         self.values = values
     }
 
-    public static func fromSudokuFile(_ sudokuFile: String) -> Sudoku {
+    static func fromSudokuFile(_ sudokuFile: String) -> Sudoku {
         let splitFile = Array(sudokuFile)
         let fileValues = fileToStringConversionIndexes.map { splitFile[$0] }
             .map{
@@ -19,7 +19,7 @@ public struct Sudoku {
         return Sudoku(fileValues)
     }
 
-    public static func isSudokuFile(_ sudokuFile: String) -> Bool {
+    static func isSudokuFile(_ sudokuFile: String) -> Bool {
         if (sudokuFile.count != 167) { return false }
 
         for character in sudokuFile {
@@ -31,7 +31,7 @@ public struct Sudoku {
         return true
     }
 
-    public func isValid() -> Bool {
+    func isValid() -> Bool {
         if (!values.allSatisfy { $0 >= 0 && $0 < 10}) {
             return false
         }
