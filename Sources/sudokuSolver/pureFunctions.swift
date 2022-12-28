@@ -25,7 +25,7 @@ extension Array where Element == Int {
         return newArray
     }
 
-    // Needs to be tested.
+
     func unique() -> [Int] {
         return Array(Set(self)).sorted()
     }
