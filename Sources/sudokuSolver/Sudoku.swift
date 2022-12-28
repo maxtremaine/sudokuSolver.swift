@@ -1,8 +1,8 @@
 struct Sudoku {
-    let values: [Int]
+    let cells: [Int]
 
-    init(_ values: [Int]) {
-        self.values = values
+    init(_ cells: [Int]) {
+        self.cells = cells
     }
 
     static func fromSudokuFile(_ sudokuFile: String) -> Sudoku {
@@ -32,12 +32,12 @@ struct Sudoku {
     }
 
     func isValid() -> Bool {
-        if (!values.allSatisfy { $0 >= 0 && $0 < 10}) {
+        if (!cells.allSatisfy { $0 >= 0 && $0 < 10}) {
             return false
         }
 
         for group in groups {
-            let groupValues = group.map { values[$0] }
+            let groupValues = group.map { cells[$0] }
             .filter { $0 != 0 }
 
             if (groupValues.hasDuplicates()) {
@@ -46,6 +46,10 @@ struct Sudoku {
         }
 
         return true
+    }
+
+    func getCellValues(indexes: [Int]) -> [Int] {
+        self.cells
     }
 }
 

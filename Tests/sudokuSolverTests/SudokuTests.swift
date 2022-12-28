@@ -68,6 +68,6 @@ final class SudokuTests: XCTestCase {
             5, 0, 0, 0, 1, 0, 9, 0, 6, 0, 7, 0, 0, 0, 8, 0, 0, 0, 4, 0, 0, 6, 0, 0, 0, 2, 0, 0,
             0, 8]
 
-        XCTAssertEqual(Sudoku.fromSudokuFile(sudokuFile).values, sudokuValues)
+        XCTAssertEqual(Sudoku.fromSudokuFile(sudokuFile).cells, sudokuValues)
     }
 }
