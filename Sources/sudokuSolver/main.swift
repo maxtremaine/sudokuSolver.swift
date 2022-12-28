@@ -31,6 +31,6 @@ let endPuzzles: [Sudoku] = Array(1...numberOfRuns).reduce(into: [ startPuzzle ])
     workingBranches = newWorkingBranches
 }
 
-print(endPuzzles)
+print(endPuzzles[0].toSudokuFile())
 
 print("Ran in \(Date().timeIntervalSince(t0)) seconds.")
