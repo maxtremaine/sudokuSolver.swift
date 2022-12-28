@@ -40,10 +40,8 @@ public struct Sudoku {
             let groupValues = group.map { values[$0] }
             .filter { $0 != 0 }
 
-            for (i, value) in groupValues.enumerated() {
-                if ( groupValues.lastIndex(of: value) != i ) {
-                    return false
-                }
+            if (groupValues.hasDuplicates()) {
+                return false
             }
         }
 
@@ -53,8 +51,6 @@ public struct Sudoku {
 
 private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|",
     "_", "-", "a", "b", "c", "d", "e", "f", "g", "h", "i"]
-
-
 
 private let fileToStringConversionIndexes = [ 16, 17, 18, 20, 21, 22, 24, 25, 26, 30, 31, 32, 34,
     35, 36, 38, 39, 40, 44, 45, 46, 48, 49, 50, 52, 53, 54, 72, 73, 74, 76, 77, 78, 80, 81, 82,
