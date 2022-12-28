@@ -70,4 +70,10 @@ final class SudokuTests: XCTestCase {
 
         XCTAssertEqual(Sudoku.fromSudokuFile(sudokuFile).cells, sudokuValues)
     }
+
+    func testGetCells() throws {
+        let testPuzzle = Sudoku([ 1, 2, 3 ])
+
+        XCTAssertEqual(testPuzzle.getCells(indexes: [ 1, 2 ]), [ 2, 3 ])
+    }
 }

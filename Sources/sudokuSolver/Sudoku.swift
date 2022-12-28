@@ -7,7 +7,7 @@ struct Sudoku {
 
     static func fromSudokuFile(_ sudokuFile: String) -> Sudoku {
         let splitFile = Array(sudokuFile)
-        let fileValues = fileToStringConversionIndexes.map { splitFile[$0] }
+        let fileCells = fileToStringConversionIndexes.map { splitFile[$0] }
             .map{
                 if($0 == "_") {
                     return 0
@@ -16,7 +16,7 @@ struct Sudoku {
                 }
             }
         
-        return Sudoku(fileValues)
+        return Sudoku(fileCells)
     }
 
     static func isSudokuFile(_ sudokuFile: String) -> Bool {
@@ -48,8 +48,12 @@ struct Sudoku {
         return true
     }
 
-    func getCellValues(indexes: [Int]) -> [Int] {
-        self.cells
+    func getCells(indexes: [Int]) -> [Int] {
+        return self.cells.enumerated().filter {
+            indexes.contains($0.0)
+        }.map {
+            $0.1
+        }
     }
 }
 
