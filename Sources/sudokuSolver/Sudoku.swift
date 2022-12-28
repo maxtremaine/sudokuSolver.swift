@@ -47,6 +47,18 @@ struct Sudoku {
 
         return true
     }
+
+    func getRelatedCellValues(index: Int) -> [Int] {
+        let relatedGroups = groups.filter { $0.contains(index) }
+        let relatedIndexes: Set<Int> = relatedGroups.reduce(into: Set()) { workingSet, group in
+            workingSet.formUnion(group)
+        }
+        return cells.enumerated()
+            .filter { relatedIndexes.contains($0.0) }
+            .map { $0.1 }
+            .filter { $0 != 0 }
+            .unique()
+    }
 }
 
 private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|",

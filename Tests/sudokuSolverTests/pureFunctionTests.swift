@@ -23,4 +23,8 @@ final class pureFunctionTests: XCTestCase {
         XCTAssertEqual(originalArray, [ 1, 2, 3 ]) // Original Array is unchanged.
         XCTAssertEqual(newArray, [ 1, 3, 3 ])
     }
+
+    func testUnique() throws {
+        XCTAssertEqual([ 1, 3, 3, 2 ].unique(), [ 1, 2, 3 ])
+    }
 }
