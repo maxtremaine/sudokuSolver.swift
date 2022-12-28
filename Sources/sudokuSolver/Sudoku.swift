@@ -47,14 +47,6 @@ struct Sudoku {
 
         return true
     }
-
-    func getCells(indexes: [Int]) -> [Int] {
-        return self.cells.enumerated().filter {
-            indexes.contains($0.0)
-        }.map {
-            $0.1
-        }
-    }
 }
 
 private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|",
