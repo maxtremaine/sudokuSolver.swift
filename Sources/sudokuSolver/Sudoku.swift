@@ -59,6 +59,18 @@ struct Sudoku {
             .filter { $0 != 0 }
             .unique()
     }
+
+    func getBlankCells() -> [BlankCell] {
+        return cells.enumerated()
+            .filter { $0.1 == 0 }
+            .map {
+                BlankCell(
+                    index: $0.0,
+                    possibleValues: self.getRelatedCellValues(index: $0.0)
+                        .getMissingDigits()
+                )
+            }
+    }
 }
 
 private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|",

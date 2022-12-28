@@ -93,4 +93,26 @@ final class SudokuTests: XCTestCase {
             relatedToOne
         )
     }
+
+    func testGetBlankCells() throws {
+        let testPuzzle = [
+            "  abc def ghi",
+            "1 _12|954|836",
+            "2 539|186|247",
+            "3 684|237|519",
+            "  -----------",
+            "4 325|479|681",
+            "5 198|365|724",
+            "6 476|821|953",
+            "  -----------",
+            "7 247|593|168",
+            "8 861|742|395",
+            "9 953|618|472",
+        ].joined(separator: "\n")
+
+        XCTAssertEqual(
+            Sudoku.fromSudokuFile(testPuzzle).getBlankCells(),
+            [ BlankCell(index: 0, possibleValues: [ 7 ]) ]
+        )
+    }
 }
