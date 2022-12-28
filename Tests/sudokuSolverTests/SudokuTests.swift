@@ -29,7 +29,20 @@ final class SudokuTests: XCTestCase {
             "7 _1_|9_6|_7_",
             "8 __8|___|4__",
             "9 6__|_2_|__8"].joined(separator: "\n")
+        
         XCTAssertTrue(Sudoku.isSudokuFile(validFile))
         XCTAssertFalse(Sudoku.isSudokuFile(badCharacter))
+    }
+
+    func testIsValidSudoku() throws {
+        let valid_puzzle = [ 7, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 0, 9,
+            0, 8, 0, 0, 0, 3, 5, 0, 4, 9, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 1, 0, 8, 5,
+            0, 0, 0, 1, 0, 9, 0, 6, 0, 7, 0, 0, 0, 8, 0, 0, 0, 4, 0, 0, 6, 0, 0, 0, 2, 0, 0, 0, 8 ]
+        let invalid_puzzle = [7, 7, 0, 0, 4, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 0, 9,
+            0, 8, 0, 0, 0, 3, 5, 0, 4, 9, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 1, 0, 8, 5, 0,
+            0, 0, 1, 0, 9, 0, 6, 0, 7, 0, 0, 0, 8, 0, 0, 0, 4, 0, 0, 6, 0, 0, 0, 2, 0, 0, 0, 8 ]
+        
+        XCTAssertTrue(Sudoku(valid_puzzle).isValid())
+        XCTAssertFalse(Sudoku(invalid_puzzle).isValid())
     }
 }

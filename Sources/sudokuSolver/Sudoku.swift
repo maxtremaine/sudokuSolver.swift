@@ -1,6 +1,10 @@
 public struct Sudoku {
     let values: [Int]
 
+    init(_ values: [Int]) {
+        self.values = values
+    }
+
     public static func isSudokuFile(_ sudokuFile: String) -> Bool {
         if (sudokuFile.count != 167) { return false }
 
@@ -14,12 +18,27 @@ public struct Sudoku {
     }
 
     public func isValid() -> Bool {
+        if (!values.allSatisfy { $0 >= 0 && $0 < 10}) {
+            return false
+        }
+
+        for group in groups {
+            let groupValues = group.map { values[$0] }
+            .filter { $0 != 0 }
+
+            for (i, value) in groupValues.enumerated() {
+                if ( groupValues.lastIndex(of: value) != i ) {
+                    return false
+                }
+            }
+        }
+
         return true
     }
 }
 
-private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|", "_", "-", "a", "b", "c", "d", "e", "f", "g",
-    "h", "i"]
+private let sudokuFileValues = [ "_", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "\n", "|",
+    "_", "-", "a", "b", "c", "d", "e", "f", "g", "h", "i"]
 
 
 
