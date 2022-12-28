@@ -14,4 +14,13 @@ final class pureFunctionTests: XCTestCase {
         XCTAssertTrue(arrayWithDuplicates.hasDuplicates())
         XCTAssertFalse(arrayWithoutDuplicates.hasDuplicates())
     }
+
+    func testReplace() throws {
+        let originalArray = [ 1, 2, 3 ]
+
+        let newArray = originalArray.replace(1, newValue: 3)
+
+        XCTAssertEqual(originalArray, [ 1, 2, 3 ]) // Original Array is unchanged.
+        XCTAssertEqual(newArray, [ 1, 3, 3 ])
+    }
 }

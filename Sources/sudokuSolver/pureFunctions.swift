@@ -16,4 +16,12 @@ extension Array where Element == Int {
         
         return false
     }
+
+    func replace(_ i: Int, newValue: Int) -> [Int] {
+        var newArray = self
+
+        newArray[i] = newValue
+        
+        return newArray
+    }
 }
