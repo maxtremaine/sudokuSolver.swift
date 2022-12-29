@@ -1,7 +1,7 @@
 import XCTest
 @testable import sudokuSolver
 
-final class pureFunctionTests: XCTestCase {
+final class ArrayTests: XCTestCase {
     func testGetMissingDigits() throws {
         XCTAssertEqual([ 1, 2, 3 ].getMissingDigits(), [ 4, 5, 6, 7, 8, 9 ])
         XCTAssertEqual([ 1, 2, 10 ].getMissingDigits(), [])
